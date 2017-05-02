@@ -1,0 +1,74 @@
+﻿<div class="col-md-12">
+    <div class="col-md-4">
+        <div class="bs-callout bs-callout-danger" id="callout-input-needs-type" ng-controller="scaleCapsController">
+            <h4>{{patient.PatientName}}</h4>
+            <p>NRIC: <code>{{patient.PatientId}}</code></p>
+        </div>
+    </div>
+    <div class="col-md-8" style="margin-top: 10%;">
+        <a class="pull-right" href="./#/drag_drop">Go To Raisoft</a>
+    </div>
+</div>
+
+<div class="col-md-12" ng-controller="scaleCapsController">
+    <div class="col-md-6" style="padding-left:0px;">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Scales
+                </div>
+                <div class="panel-body">
+                    <div class="sme-filter" style="position: relative;overflow-x: auto;">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr class="tbl-head">
+                                    <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                                    <th>Value</th>
+                                    <th></th>
+                                </tr>
+                                <tr data-ng-repeat="data in patient.scales">
+                                    <td>{{data.scaleName}}</td>
+                                    <td>{{data.value}}</td>
+                                    <td>
+                                        <a href="./#/select_shift" ng-click="moveFromPrimaryColumn(data.Id)"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6" style="padding-right:0px;">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    CAP's
+                    <a href="#" class="pull-right"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Show All</a>
+                </div>
+                <div class="panel-body">
+                    <div class="sme-filter" style="position: relative;overflow-x: auto;">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr class="tbl-head">
+                                    <th></th>
+                                    <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                                    <th>Value</th>
+                                </tr>
+                                <tr data-ng-repeat="dataRepo in repo">
+                                    <td>
+                                        <a ng-click="moveFromSecondaryColumn(dataRepo.Id)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>{{dataRepo.scaleName}}</td>
+                                    <td>{{dataRepo.value}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p ng-show="!repo.length">Nothing Added</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+﻿<div class="col-md-12">
+    <div class="col-md-4">
+        <div class="bs-callout bs-callout-danger" id="callout-input-needs-type" ng-controller="scaleCapsController">
+            <h4>{{patient.PatientName}}</h4>
+            <p>NRIC: <code>{{patient.PatientId}}</code></p>
+        </div>
+    </div>
+    <div class="col-md-8" style="margin-top: 10%;">
+        <a class="pull-right" href="./#/scalecaps_view">Go To Raisoft</a>
+    </div>
+</div>
+<div class="col-md-12" ng-controller="scaleCapsController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Scales
+        </div>
+        <div class="panel-body">
+            <div class="sme-filter" style="position: relative;overflow-x: auto;">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr class="tbl-head">
+                            <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                            <th>Value</th>
+                            <th></th>
+                            <th class="hide-on-small"></th>
+                        </tr>
+                        <tr data-ng-repeat="data in patient.scales">
+                            <td>{{data.scaleName}}</td>
+                            <td>{{data.value}}</td>
+                            <td class="hide-on-small" style="vertical-align: middle;">
+                                <div class="truncate" style="width: 150px;">
+                                    <div>
+                                        <table class="scalebar_container" style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="min_value dgt3">{{data.minValue}}</td>
+                                                    <td class="content">
+                                                        <div class="rai_scalebar none" style="height: 20px; position: relative; overflow: visible;" title="Minimi:&nbsp;0&nbsp;-&nbsp;Maksimi:&nbsp;0">
+                                                            <div class="bar none" ng-style="{width: calculatePercent(data.minValue,data.maxValue) }">&nbsp;</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="max_value dgt3">{{data.maxValue}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" style="height:20px"></div>
+
+<div class="col-md-12" ng-controller="scaleCapsController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            CAP's
+            <a href="#" class="pull-right"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Show All</a>
+        </div>
+        <div class="panel-body">
+            <div class="sme-filter" style="position: relative;overflow-x: auto;">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr class="tbl-head">
+                            <th></th>
+                            <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                            <th>Value</th>
+                            <th></th>
+                        </tr>
+                        <tr data-ng-repeat="data in patient.caps">
+                            <th><i class="fa fa-exclamation-circle text-danger" aria-hidden="true"></i></th>
+                            <td>{{data.capName}}</td>
+                            <td>{{data.value}}</td>
+                            <td>
+                                <a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

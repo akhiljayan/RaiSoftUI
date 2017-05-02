@@ -1,0 +1,91 @@
+﻿<div class="col-md-12">
+    <div class="col-md-4">
+        <div class="bs-callout bs-callout-danger" id="callout-input-needs-type" ng-controller="dragDropController">
+            <h4>{{patient.PatientName}}</h4>
+            <p>NRIC: <code>{{patient.PatientId}}</code></p>
+        </div>
+    </div>
+    <div class="col-md-8" style="margin-top: 10%;">
+        <a class="pull-right" href="./#/scalecaps" id="slayer">Go To Raisoft</a>
+    </div>
+</div>
+
+<div class="col-md-12" ng-controller="dragDropController">
+    <div class="col-md-6" style="padding-left:0px;">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Scales
+                </div>
+                <div class="panel-body">
+                    <div class="sme-filter" style="position: relative;overflow-x: auto;">
+                        <table class="table table-hover">
+                            <tbody ui:sortable ng:model="list">
+                                <tr class="tbl-head">
+                                    <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                                    <th>Value</th>
+                                    <th></th>
+                                </tr>
+                                <tr ng-repeat="data in patient.scales" dd-draggable="true" class="item drag-item" itemid="{{data.Id}}" style="cursor:pointer">
+                                    <td>{{data.scaleName}}</td>
+                                    <td>{{data.value}}</td>
+                                    <td><i class="fa fa-arrows-alt text-primary" aria-hidden="true"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p ng-show="!patient.scales.length">Empty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6" style="padding-right:0px;">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    CAP's
+                    <a href="#" class="pull-right"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Show All</a>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <div class="sme-filter" style="position: relative;overflow-x: auto;">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="tbl-head">
+                                        <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                                        <th>Value</th>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="dataRepo in repo" class="{{dataRepo.Id}}_dragstyle dropbox"  id="dropbox" dd-drop-target="true" secondaryid="{{dataRepo.Id}}">
+                                        <td>{{dataRepo.scaleName}}</td>
+                                        <td>{{dataRepo.value}}</td>
+                                        <td><a ng-click="removeFrmColumn(dataRepo.Id)"><i class="fa fa-times-circle-o text-danger" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p ng-show="!repo.length">Nothing Added</p>
+                            <div id="dropbox" dd-drop-target="true" secondaryid="-1" class="-1_dragstyle dropbox" ng-show="default_drop.showtouch" style="padding:4px;">
+                                <h6 class="" style="text-align:center; height:25px;padding:8px;">--<i>Drop Here</i>--</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('mouseup', function (e) {
+            alert("Asdasd");
+            $(".dropbox").css("border-top", "none");
+        });
+
+        $(".drag-item").on('mouseup', function (e) {
+            alert("working");
+        });
+    });
+</script>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dragon Drop for AngularJS</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/2.3.1/spruce/bootstrap.min.css">
+    <style>
+        [btf-dragon] {
+            padding: 20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body ng-app="ExampleApp">
+    <div class="container" ng-controller="MainCtrl">
+
+        <div class="row">
+            <h1>Dragon Drop Example</h1>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="span6">
+                <h3>Things</h3>
+                <table class="table table-hover">
+                    <tbody ui:sortable ng:model="list">
+                        <tr class="tbl-head">
+                            <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr btf-dragon="thing in things">
+                            <td>{{thing.scaleName}}</td>
+                            <td>{{thing.value}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div btf-dragon="thing in things">{{thing.value}}</div>
+            </div>
+            <div class="span6">
+                <h3>Other Things</h3>
+                <table class="table table-hover">
+                    <tbody ui:sortable ng:model="list">
+                        <tr class="tbl-head">
+                            <th><i class="fa fa-sort" aria-hidden="true"></i> &nbsp; Name</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr btf-dragon="thing in otherThings">
+                            <td>{{thing.scaleName}}</td>
+                            <td>{{thing.value}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="span6">
+                <h3>Things</h3>
+                <pre>{{things | json}}</pre>
+            </div>
+            <div class="span6">
+                <h3>Other Things</h3>
+                <pre>{{otherThings | json}}</pre>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="dragon-drop.js"></script>
+    <script>
+        angular.module('ExampleApp', ['btford.dragon-drop']).
+          controller('MainCtrl', function ($scope) {
+              $scope.things = [
+                                    {
+                                        "Id": 1,
+                                        "scaleName": "Scale name 1 with a big name of may be 40 words",
+                                        "value": "7-Reproduce function",
+                                        "minValue": 0,
+                                        "maxValue": 0
+                                    },
+                                    {
+                                        "Id": 2,
+                                        "scaleName": "Some other",
+                                        "value": "0.35",
+                                        "minValue": 0.23,
+                                        "maxValue": 2.7
+                                    },
+                                    {
+                                        "Id": 3,
+                                        "scaleName": "RUD-III/HC 23 Group",
+                                        "value": "PA-5 Reduced Physical Function",
+                                        "minValue": 18.5,
+                                        "maxValue": 27.6
+                                    },
+                                    {
+                                        "Id": 4,
+                                        "scaleName": "Activities Daily Living",
+                                        "value": "0",
+                                        "minValue": 0,
+                                        "maxValue": 0
+                                    },
+                                    {
+                                        "Id": 5,
+                                        "scaleName": "Slayer Patogen",
+                                        "value": "0-Indipendent",
+                                        "minValue": 2,
+                                        "maxValue": 10
+                                    },
+                                    {
+                                        "Id": 6,
+                                        "scaleName": "Nascrophilia",
+                                        "value": "function",
+                                        "minValue": 13,
+                                        "maxValue": 27
+                                    },
+                                    {
+                                        "Id": 7,
+                                        "scaleName": "may be 40 words",
+                                        "value": "0",
+                                        "minValue": 0,
+                                        "maxValue": 0
+                                    },
+                                    {
+                                        "Id": 8,
+                                        "scaleName": "a big name of may",
+                                        "value": "Heyaaa",
+                                        "minValue": 5,
+                                        "maxValue": 15
+                                    },
+                                    {
+                                        "Id": 9,
+                                        "scaleName": "ayo mone idu sean anu",
+                                        "value": "full set anu man",
+                                        "minValue": 15,
+                                        "maxValue": 15
+                                    }
+              ];
+              $scope.otherThings = [];
+          });
+    </script>
+</body>
+</html>
